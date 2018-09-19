@@ -14,13 +14,8 @@ func show_game_over():
     show_message("Game Over")
     yield($MessageTimer, "timeout")
     $StartButton.show()
-    $MessageLabel.text = "Dodge the\nCreeps!"
+    $MessageLabel.text = "The Virus got out..."
     $MessageLabel.show()
-	
-func update_score(score):
-    $ScoreLabel.text = str(score)
-	
-
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
