@@ -111,8 +111,6 @@ lookahead = 4.0
 
 [node name="Player" parent="." index="3" instance=ExtResource( 9 )]
 
-position = Vector2( 130.274, 330.696 )
-
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 
 
