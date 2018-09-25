@@ -45,7 +45,7 @@ func _process(delta):
 	
 # Colliding with another body
 func _on_Player_body_entered(body):
-    hide() # Player disappears after being hit.
+	
     emit_signal("hit")
     $CollisionShape2D.disabled = true
 
