@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/officer_8.png-302bf13d083d261b6630b5e2ae3691cd.stex"
+path="res://.import/officer_2.png-64ce54e6146c62f9edee641c9a762194.stex"
 
 [deps]
 
-source_file="res://usable_stripes/officer_8.png"
-dest_files=[ "res://.import/officer_8.png-302bf13d083d261b6630b5e2ae3691cd.stex" ]
+source_file="res://usable_stripes/officer_walk/officer_2.png"
+dest_files=[ "res://.import/officer_2.png-64ce54e6146c62f9edee641c9a762194.stex" ]
 
 [params]
 

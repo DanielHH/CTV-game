@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/officer_7.png-0bd30476b625c4cfef4d2e30c68f1a24.stex"
+path="res://.import/officer_die_strip_right2.png-3d158aafa89e4f6f33771d21caaf77f9.stex"
 
 [deps]
 
-source_file="res://usable_stripes/officer_7.png"
-dest_files=[ "res://.import/officer_7.png-0bd30476b625c4cfef4d2e30c68f1a24.stex" ]
+source_file="res://usable_stripes/officer_die/officer_die_strip_right2.png"
+dest_files=[ "res://.import/officer_die_strip_right2.png-3d158aafa89e4f6f33771d21caaf77f9.stex" ]
 
 [params]
 

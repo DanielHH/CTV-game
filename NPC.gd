@@ -10,7 +10,7 @@ var screensize
 
 
 func _ready():
-	$AnimatedSprite.animation = "walk"
+	$AnimatedSprite.animation = "walk_right"
 	screensize = get_viewport_rect().size
 	hide()
 
