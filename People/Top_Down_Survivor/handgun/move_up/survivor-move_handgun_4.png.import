@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/survivor-move_handgun_1_up.png-b021418f4a6d6348532bc89444ab1b15.stex"
+path="res://.import/survivor-move_handgun_4.png-7621a0c183324bdaa4c21f88b74104fd.stex"
 
 [deps]
 
-source_file="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_1_up.png"
-dest_files=[ "res://.import/survivor-move_handgun_1_up.png-b021418f4a6d6348532bc89444ab1b15.stex" ]
+source_file="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_4.png"
+dest_files=[ "res://.import/survivor-move_handgun_4.png-7621a0c183324bdaa4c21f88b74104fd.stex" ]
 
 [params]
 

@@ -13,14 +13,14 @@
 [ext_resource path="res://usable_stripes/officer_walk/officerup_6.png" type="Texture" id=11]
 [ext_resource path="res://usable_stripes/officer_walk/officerup_7.png" type="Texture" id=12]
 [ext_resource path="res://usable_stripes/officer_walk/officerup_8.png" type="Texture" id=13]
-[ext_resource path="res://usable_stripes/officer_1.png" type="Texture" id=14]
-[ext_resource path="res://usable_stripes/officer_2.png" type="Texture" id=15]
-[ext_resource path="res://usable_stripes/officer_3.png" type="Texture" id=16]
-[ext_resource path="res://usable_stripes/officer_4.png" type="Texture" id=17]
-[ext_resource path="res://usable_stripes/officer_5.png" type="Texture" id=18]
-[ext_resource path="res://usable_stripes/officer_6.png" type="Texture" id=19]
-[ext_resource path="res://usable_stripes/officer_7.png" type="Texture" id=20]
-[ext_resource path="res://usable_stripes/officer_8.png" type="Texture" id=21]
+[ext_resource path="res://usable_stripes/officer_walk/officer_1.png" type="Texture" id=14]
+[ext_resource path="res://usable_stripes/officer_walk/officer_2.png" type="Texture" id=15]
+[ext_resource path="res://usable_stripes/officer_walk/officer_3.png" type="Texture" id=16]
+[ext_resource path="res://usable_stripes/officer_walk/officer_4.png" type="Texture" id=17]
+[ext_resource path="res://usable_stripes/officer_walk/officer_5.png" type="Texture" id=18]
+[ext_resource path="res://usable_stripes/officer_walk/officer_6.png" type="Texture" id=19]
+[ext_resource path="res://usable_stripes/officer_walk/officer_7.png" type="Texture" id=20]
+[ext_resource path="res://usable_stripes/officer_walk/officer_8.png" type="Texture" id=21]
 [ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up.png" type="Texture" id=22]
 [ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up2.png" type="Texture" id=23]
 [ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up3.png" type="Texture" id=24]
@@ -56,7 +56,7 @@ custom_solver_bias = 0.0
 radius = 7.64493
 height = 25.3159
 
-[node name="NPC" type="KinematicBody2D" index="0"]
+[node name="NPC" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
