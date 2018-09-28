@@ -1,6 +1,7 @@
 extends Area2D
 
 signal hit
+signal shot_fired
 signal dead
 
 export (PackedScene) var Bullet
@@ -25,11 +26,10 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
-		"""
 	if Input.is_action_pressed("shoot"):
 		fire()
-		"""
-	if (velocity.length() > 0):
+
+	if (velocity.length() > 0 or Input.is_action_pressed("shoot")):
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
 	else:
@@ -46,14 +46,13 @@ func _process(delta):
 	elif velocity.y != 0:
     	$AnimatedSprite.animation = "up"
     	$AnimatedSprite.flip_v = velocity.y > 0
-	"""
+
 func fire():
-	$AnimatedSprite.animation = "shoot"
-	position
-"""
+	#$AnimatedSprite.animation = "shoot"
+	emit_signal("shot_fired")
+
 # Colliding with another body
 func _on_Player_body_entered(body):
-	
     emit_signal("hit")
     $CollisionShape2D.disabled = true
 

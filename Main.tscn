@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://dodge_assets/art/enemyWalking_1.png" type="Texture" id=2]
-[ext_resource path="res://dodge_assets/art/enemyWalking_2.png" type="Texture" id=3]
-[ext_resource path="res://dodge_assets/art/enemySwimming_1.png" type="Texture" id=4]
-[ext_resource path="res://dodge_assets/art/enemySwimming_2.png" type="Texture" id=5]
+[ext_resource path="res://dodge_assets/art/enemySwimming_1.png" type="Texture" id=2]
+[ext_resource path="res://dodge_assets/art/enemySwimming_2.png" type="Texture" id=3]
+[ext_resource path="res://dodge_assets/art/enemyWalking_1.png" type="Texture" id=4]
+[ext_resource path="res://dodge_assets/art/enemyWalking_2.png" type="Texture" id=5]
 [ext_resource path="res://dodge_assets/art/enemyFlyingAlt_1.png" type="Texture" id=6]
 [ext_resource path="res://dodge_assets/art/enemyFlyingAlt_2.png" type="Texture" id=7]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=8]
@@ -38,13 +38,13 @@ func _on_Visibility_screen_exited():
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "walk",
-"speed": 4.0
+"name": "swim",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "swim",
-"speed": 5.0
+"name": "walk",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -74,7 +74,7 @@ _bundled = {
 "version": 2
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 Mob = SubResource( 4 )
