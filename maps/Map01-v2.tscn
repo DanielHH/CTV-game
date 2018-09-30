@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://maps/Map01-v2.gd" type="Script" id=1]
 [ext_resource path="res://Terrain/mytiles.tres" type="TileSet" id=2]
 [ext_resource path="res://People/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=4]
 
-[node name="Map01-v2" type="Node2D"]
+[node name="Map01-v2" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -33,6 +34,14 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Playerstartposition" type="Position2D" parent="." index="2"]
 
-position = Vector2( 960, 60 )
+position = Vector2( 260, 60 )
+
+[node name="NPC" parent="." index="3" instance=ExtResource( 4 )]
+
+[node name="NPCstartposition" type="Position2D" parent="." index="4"]
+
+position = Vector2( 870, 60 )
+
+[connection signal="shoot" from="Player" to="." method="_on_Killer_shoot"]
 
 

@@ -17,7 +17,7 @@ var alive = true
 
 func _ready():
 	screensize = get_viewport_rect().size
-	#$GunTimer.wait_time = gun_cooldown
+	$GunTimer.wait_time = gun_cooldown
 	hide()
 
 # Controls
@@ -31,7 +31,7 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
 	if (velocity.length() > 0):
@@ -56,14 +56,15 @@ func shoot():
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
-		var dir = Vector2(1, 0).rotated($Body.global_rotation)
-		emit_signal('shoot', Bullet, $Body.global_position, dir)
+		var dir = Vector2(1, 0).rotated($Muzzle.global_rotation)
+		emit_signal('shoot', Bullet, $Muzzle.global_position, dir)
 
 
 # Colliding with another body
 func _on_Player_body_entered(body):
-    emit_signal("hit")
-    $CollisionShape2D.disabled = true
+	print("body entered")
+	emit_signal("hit")
+	#$CollisionShape2D.disabled = true
 
 # Starting a new game
 func start(pos):
