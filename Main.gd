@@ -10,6 +10,4 @@ func game_over():
 	$HUD.show_game_over()
 
 func new_game():
-	$Player.start($StartPosition.position)
-	$NPC.start($EnemyPosition.position)
 	$HUD.show_message("Get Ready")

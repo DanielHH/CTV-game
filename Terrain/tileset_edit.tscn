@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/tileset_complet_cropped.png" type="Texture" id=1]
+[ext_resource path="res://usable_stripes/exitsign.png" type="Texture" id=2]
+
+[node name="tileset_edit" type="Node2D"]
+
+[node name="wall" type="Sprite" parent="." index="0"]
+
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 32, 32 )
+_sections_unfolded = [ "Region", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall" index="0"]
+
+position = Vector2( -0.0496933, 0.168119 )
+scale = Vector2( 0.498447, 0.505254 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, 32.0678, -32.1467, 32.2222, 31.2058, -31.8411, 31.2058 )
+
+[node name="floor" type="Sprite" parent="." index="1"]
+
+position = Vector2( 56, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+_sections_unfolded = [ "Region", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="exit" type="Sprite" parent="." index="2"]
+
+position = Vector2( 112, 16 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="exit" index="0"]
+
+position = Vector2( -2, -1 )
+scale = Vector2( 0.9375, 0.46875 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="exit/StaticBody2D" index="0"]
+
+position = Vector2( 1.06667, 1.16529 )
+scale = Vector2( 1.02083, 1.0227 )
+build_mode = 0
+polygon = PoolVector2Array( 34.6292, 34.635, 31.4574, 34.635, -32.3074, 34.5763, -32.3919, -32.3918, 34.4105, -32.579 )
+
+

@@ -1,18 +1,23 @@
 extends Area2D
 
 signal hit
-signal shot_fired
+signal shoot
 signal dead
 
 export (PackedScene) var Bullet
 export (int) var speed
 export (int) var health
+export (float) var gun_cooldown
 
 var screensize
+
+var can_shoot = true
+var alive = true
 
 
 func _ready():
 	screensize = get_viewport_rect().size
+	#$GunTimer.wait_time = gun_cooldown
 	hide()
 
 # Controls
@@ -27,29 +32,33 @@ func _process(delta):
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("shoot"):
-		fire()
+		shoot()
 
-	if (velocity.length() > 0 or Input.is_action_pressed("shoot")):
+	if (velocity.length() > 0):
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play()
+		$Body.play()
 	else:
-		$AnimatedSprite.stop()
+		$Body.stop()
 	
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
 	
 	if velocity.x != 0:
-    	$AnimatedSprite.animation = "right"
-    	$AnimatedSprite.flip_v = false
-    	$AnimatedSprite.flip_h = velocity.x < 0
+    	$Body.animation = "right"
+    	$Body.flip_v = false
+    	$Body.flip_h = velocity.x < 0
 	elif velocity.y != 0:
-    	$AnimatedSprite.animation = "up"
-    	$AnimatedSprite.flip_v = velocity.y > 0
+    	$Body.animation = "up"
+    	$Body.flip_v = velocity.y > 0
 
-func fire():
-	#$AnimatedSprite.animation = "shoot"
-	emit_signal("shot_fired")
+func shoot():
+	if can_shoot:
+		can_shoot = false
+		$GunTimer.start()
+		var dir = Vector2(1, 0).rotated($Body.global_rotation)
+		emit_signal('shoot', Bullet, $Body.global_position, dir)
+
 
 # Colliding with another body
 func _on_Player_body_entered(body):
@@ -61,3 +70,6 @@ func start(pos):
     position = pos
     show()
     $CollisionShape2D.disabled = false
+
+func _on_GunTimer_timeout():
+	can_shoot = true
