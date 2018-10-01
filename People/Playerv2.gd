@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 signal hit
 signal shoot
@@ -22,6 +22,7 @@ func _ready():
 
 # Controls
 func _process(delta):
+	move_and_collide(Vector2(0, 0))
 	var velocity = Vector2() # The player's movement vector.
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -58,16 +59,6 @@ func shoot():
 		$GunTimer.start()
 		var dir = Vector2(1, 0).rotated($Muzzle.global_rotation)
 		emit_signal('shoot', Bullet, $Muzzle.global_position, dir)
-
-
-# Colliding with another body
-func _on_Player_body_entered(body):
-	if body.has_method('is_wall'):
-		print("this is a wall")
-	else:
-		print("this is an enemy")
-	emit_signal("hit")
-	#$CollisionShape2D.disabled = true
 
 # Starting a new game
 func start(pos):

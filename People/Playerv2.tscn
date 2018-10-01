@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=2]
 
-[ext_resource path="res://People/Player.gd" type="Script" id=1]
+[ext_resource path="res://People/Playerv2.gd" type="Script" id=1]
 [ext_resource path="res://bullet/PlayerBullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_0.png" type="Texture" id=3]
 [ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_1.png" type="Texture" id=4]
@@ -56,25 +56,21 @@ animations = [ {
 "name": "up",
 "speed": 5.0
 } ]
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 23.5016
-height = 1.46417
+radius = 10.0
+height = 45.6191
 
-[node name="Player" type="Area2D"]
+[node name="Playerv2" type="KinematicBody2D" index="0"]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+position = Vector2( 0.440125, -2.20064 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -92,22 +88,22 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( -0.0170336, 4.09685 )
-scale = Vector2( 1.07477, 0.86045 )
+position = Vector2( -2.4207, 4.18121 )
+rotation = 1.5708
+scale = Vector2( 1.38809, 0.448614 )
 shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="GunTimer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 0.4
-one_shot = true
+wait_time = 1.0
+one_shot = false
 autostart = false
 
 [node name="Muzzle" type="Position2D" parent="." index="3"]
 
-position = Vector2( 38.5005, 12.9413 )
-
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
+position = Vector2( 33.4497, 12.7637 )
 
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 
