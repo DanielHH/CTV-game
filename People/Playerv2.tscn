@@ -63,7 +63,7 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 45.6191
 
-[node name="Playerv2" type="KinematicBody2D"]
+[node name="Playerv2" type="KinematicBody2D" index="0"]
 
 position = Vector2( 0.440125, -2.20064 )
 input_pickable = false
@@ -101,9 +101,28 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="Muzzle" type="Position2D" parent="." index="3"]
+[node name="Muzzleright" type="Position2D" parent="." index="3"]
 
-position = Vector2( 33.4497, 12.7637 )
+position = Vector2( 51.4949, 2.20064 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Muzzleup" type="Position2D" parent="." index="4"]
+
+position = Vector2( -0.440125, -38.7312 )
+rotation = -1.5708
+_sections_unfolded = [ "Transform" ]
+
+[node name="Muzzleleft" type="Position2D" parent="." index="5"]
+
+position = Vector2( -53.6955, 2.20064 )
+rotation = 3.14159
+_sections_unfolded = [ "Transform" ]
+
+[node name="Muzzledown" type="Position2D" parent="." index="6"]
+
+position = Vector2( -0.440125, 43.1325 )
+rotation = 1.5708
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 

@@ -57,8 +57,19 @@ func shoot():
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
-		var dir = Vector2(1, 0).rotated($Muzzle.global_rotation)
-		emit_signal('shoot', Bullet, $Muzzle.global_position, dir)
+		var dir = Vector2(1, 0)
+		var pos = $Muzzleright.global_position
+		if $Body.animation == "right":
+			if $Body.flip_h == true:
+				dir = Vector2(-1, 0)
+				pos = $Muzzleleft.global_position
+		elif $Body.animation == "up":
+			dir = Vector2(0, -1)
+			pos = $Muzzleup.global_position
+			if $Body.flip_v == true:
+				dir = Vector2(0, 1)
+				pos = $Muzzledown.global_position
+		emit_signal('shoot', Bullet, pos, dir)
 
 # Starting a new game
 func start(pos):

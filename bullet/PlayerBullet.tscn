@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 14.259, 6.18236 )
 
-[node name="PlayerBullet" index="0" instance=ExtResource( 1 )]
+[node name="PlayerBullet" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 speed = 1300
