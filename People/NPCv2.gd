@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 signal hit
 signal dead
@@ -22,20 +22,11 @@ func take_damage(damage):
 	health -= damage
 	if health <= 0:
 		$AnimatedSprite.animation = "die_right"
-		$dietimer.start()
-	else:
-		$AnimatedSprite.animation = "get_shot"
-		$getshottimer.start()
-	
+		var transform = get_node("CollisionShape2D").get_transform()
+		Get_node("CollisionShape2D").Set_scale(Vector2(0, 0))
+		#queue_free()
 
 # Starting a new game
 func start(pos):
     position = pos
     show()
-
-func _on_getshottimer_timeout():
-	$AnimatedSprite.animation = "walk_right"
-
-
-func _on_dietimer_timeout():
-	queue_free()
