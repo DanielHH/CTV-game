@@ -5,27 +5,19 @@
 [ext_resource path="res://images/pistol.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 14.259, 6.18236 )
 
 [node name="PlayerBullet" instance=ExtResource( 1 )]
-
 script = ExtResource( 2 )
 speed = 1300
 damage = 40
 lifetime = 2.0
 
 [node name="Sprite" parent="." index="0"]
-
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" parent="." index="1"]
-
 position = Vector2( 6.2727, 0 )
 scale = Vector2( 0.844206, 1 )
 shape = SubResource( 1 )
-
-

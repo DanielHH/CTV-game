@@ -44,7 +44,6 @@
 [ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_19.png" type="Texture" id=42]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
@@ -58,18 +57,10 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 10.0
 height = 45.6191
 
 [node name="Playerv2" type="KinematicBody2D"]
-
 position = Vector2( 0.440125, -2.20064 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -79,51 +70,31 @@ speed = 150
 health = 100
 gun_cooldown = 0.4
 
-[node name="Body" type="AnimatedSprite" parent="." index="0"]
-
+[node name="Body" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
 animation = "right"
-_sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.4207, 4.18121 )
 rotation = 1.5708
 scale = Vector2( 1.38809, 0.448614 )
 shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="GunTimer" type="Timer" parent="." index="2"]
+[node name="GunTimer" type="Timer" parent="."]
 
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="Muzzleright" type="Position2D" parent="." index="3"]
-
+[node name="Muzzleright" type="Position2D" parent="."]
 position = Vector2( 51.4949, 2.20064 )
-_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Muzzleup" type="Position2D" parent="." index="4"]
-
+[node name="Muzzleup" type="Position2D" parent="."]
 position = Vector2( -0.440125, -38.7312 )
 rotation = -1.5708
-_sections_unfolded = [ "Transform" ]
 
-[node name="Muzzleleft" type="Position2D" parent="." index="5"]
-
+[node name="Muzzleleft" type="Position2D" parent="."]
 position = Vector2( -53.6955, 2.20064 )
 rotation = 3.14159
-_sections_unfolded = [ "Transform" ]
 
-[node name="Muzzledown" type="Position2D" parent="." index="6"]
-
+[node name="Muzzledown" type="Position2D" parent="."]
 position = Vector2( -0.440125, 43.1325 )
 rotation = 1.5708
-_sections_unfolded = [ "Transform" ]
-
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
-
-

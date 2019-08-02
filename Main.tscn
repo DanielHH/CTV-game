@@ -1,17 +1,16 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://dodge_assets/art/enemySwimming_1.png" type="Texture" id=2]
-[ext_resource path="res://dodge_assets/art/enemySwimming_2.png" type="Texture" id=3]
+[ext_resource path="res://dodge_assets/art/enemyWalking_1.png" type="Texture" id=2]
+[ext_resource path="res://dodge_assets/art/enemyWalking_2.png" type="Texture" id=3]
 [ext_resource path="res://dodge_assets/art/enemyFlyingAlt_1.png" type="Texture" id=4]
 [ext_resource path="res://dodge_assets/art/enemyFlyingAlt_2.png" type="Texture" id=5]
-[ext_resource path="res://dodge_assets/art/enemyWalking_1.png" type="Texture" id=6]
-[ext_resource path="res://dodge_assets/art/enemyWalking_2.png" type="Texture" id=7]
+[ext_resource path="res://dodge_assets/art/enemySwimming_1.png" type="Texture" id=6]
+[ext_resource path="res://dodge_assets/art/enemySwimming_2.png" type="Texture" id=7]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://maps/Map01-v2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
-
 script/source = "extends RigidBody2D
 
 export (int) var min_speed # Minimum speed range.
@@ -33,12 +32,11 @@ func _on_Visibility_screen_exited():
 "
 
 [sub_resource type="SpriteFrames" id=2]
-
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "swim",
-"speed": 5.0
+"name": "walk",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -47,18 +45,15 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "walk",
-"speed": 4.0
+"name": "swim",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
-
-custom_solver_bias = 0.0
 radius = 33.6089
 height = 17.0466
 
 [sub_resource type="PackedScene" id=4]
-
 _bundled = {
 "conn_count": 1,
 "conns": PoolIntArray( 3, 0, 36, 35, 2, 0 ),
@@ -74,14 +69,10 @@ _bundled = {
 }
 
 [node name="Main" type="Node2D"]
-
 script = ExtResource( 1 )
 Mob = SubResource( 4 )
 
-[node name="HUD" parent="." index="0" instance=ExtResource( 8 )]
+[node name="HUD" parent="." instance=ExtResource( 8 )]
 
-[node name="Map01-v2" parent="." index="1" instance=ExtResource( 9 )]
-
+[node name="Map01-v2" parent="." instance=ExtResource( 9 )]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
-
-
