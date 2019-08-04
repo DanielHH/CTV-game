@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://maps/Map01-v2.gd" type="Script" id=1]
 [ext_resource path="res://Terrain/mytiles.tres" type="TileSet" id=2]
 [ext_resource path="res://NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://People/Playerv2.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 63.7635, 581.482, 0, 0, 0, 0, 63.7635, 287.561, 0, 0, 0, 0, 349.519, 285.228, 0, 0, 0, 0, 351.852, 421.691, 0, 0, 0, 0, 671.432, 414.693, 0, 0, 0, 0, 671.432, 291.06, 0, 0, 0, 0, 960.687, 286.395, 0, 0, 0, 0, 957.188, 18.1341 )
+}
 
 [node name="Map01-v2" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,4 +29,13 @@ scale = Vector2( 1, 0.954297 )
 
 [node name="NPCstartposition" type="Position2D" parent="TileMap"]
 position = Vector2( 870, 60 )
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D"]
+position = Vector2( 63.7635, 581.482 )
+rotation = -1.5708
 [connection signal="shoot" from="TileMap/Playerv2" to="." method="_on_Player_shoot"]
