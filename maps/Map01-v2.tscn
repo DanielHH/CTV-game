@@ -22,6 +22,6 @@ scale = Vector2( 1, 0.954297 )
 
 [node name="Playerv2" parent="TileMap" instance=ExtResource( 4 )]
 
-[node name="NPCstartposition" type="Position2D" parent="."]
+[node name="NPCstartposition" type="Position2D" parent="TileMap"]
 position = Vector2( 870, 60 )
 [connection signal="shoot" from="TileMap/Playerv2" to="." method="_on_Player_shoot"]
