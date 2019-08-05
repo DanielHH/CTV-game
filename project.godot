@@ -19,6 +19,11 @@ config/name="Contain The Virus! Testing"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 ui_accept={
@@ -37,4 +42,5 @@ shoot={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
