@@ -8,6 +8,13 @@ export (int) var health
 
 var screensize
 
+"""
+func control(delta):
+	if parent is PathFollow2D:
+		parent.set_offset(parent.get_offset() + speed * delta)
+	else:
+		pass
+"""
 
 func _ready():
 	screensize = get_viewport_rect().size
