@@ -6,84 +6,54 @@
 [ext_resource path="res://usable_stripes/exitsign.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10.0662, 10.0337 )
+extents = Vector2( 15.5597, 15.8045 )
 
 [sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 36.1281, 25.0665 )
 
 [node name="tileset_edit" type="Node2D"]
 
-[node name="wall" type="Sprite" parent="." index="0"]
-
+[node name="wall" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 32, 32 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="wall" index="0"]
-
+[node name="StaticBody2D" type="StaticBody2D" parent="wall"]
 position = Vector2( -0.0496933, 0.168119 )
-scale = Vector2( 0.498447, 0.505254 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+rotation = -0.00155708
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D"]
 position = Vector2( 0.214618, -0.146521 )
-scale = Vector2( 3.16462, 3.14958 )
 shape = SubResource( 1 )
 
-[node name="floor" type="Sprite" parent="." index="1"]
-
+[node name="floor" type="Sprite" parent="."]
 position = Vector2( 56, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 32, 32, 32 )
-_sections_unfolded = [ "Region", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="exit" type="Sprite" parent="." index="2"]
-
+[node name="exit" type="Sprite" parent="."]
 position = Vector2( 112, 16 )
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="exit" index="0"]
-
+[node name="StaticBody2D" type="StaticBody2D" parent="exit"]
 position = Vector2( -2, -1 )
 scale = Vector2( 0.9375, 0.46875 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="exit/StaticBody2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit/StaticBody2D"]
 position = Vector2( 2.21096, -13.5867 )
 scale = Vector2( 0.943494, 0.781177 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-

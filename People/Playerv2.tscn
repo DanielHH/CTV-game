@@ -48,16 +48,17 @@ animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "right",
-"speed": 5.0
+"speed": 22.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "up",
-"speed": 5.0
+"speed": 22.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-height = 45.6191
+radius = 15.7558
+height = 10.3113
 
 [node name="Playerv2" type="KinematicBody2D"]
 position = Vector2( 0.440125, -2.20064 )
@@ -75,26 +76,25 @@ scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
 animation = "right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.4207, 4.18121 )
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.181 )
 rotation = 1.5708
-scale = Vector2( 1.38809, 0.448614 )
 shape = SubResource( 2 )
 
 [node name="GunTimer" type="Timer" parent="."]
 
 [node name="Muzzleright" type="Position2D" parent="."]
-position = Vector2( 51.4949, 2.20064 )
+position = Vector2( 49, 12 )
 
 [node name="Muzzleup" type="Position2D" parent="."]
-position = Vector2( -0.440125, -38.7312 )
+position = Vector2( 12, -40 )
 rotation = -1.5708
 
 [node name="Muzzleleft" type="Position2D" parent="."]
-position = Vector2( -53.6955, 2.20064 )
+position = Vector2( -53.695, -12 )
 rotation = 3.14159
 
 [node name="Muzzledown" type="Position2D" parent="."]
-position = Vector2( -0.440125, 43.1325 )
+position = Vector2( -12, 43.132 )
 rotation = 1.5708
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]

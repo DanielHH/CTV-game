@@ -45,13 +45,28 @@ func _process(delta):
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
 	
-	if velocity.x != 0:
-    	$Body.animation = "right"
-    	$Body.flip_v = false
-    	$Body.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-    	$Body.animation = "up"
-    	$Body.flip_v = velocity.y > 0
+	var pos_right = Vector2(0, 4.181)
+	var pos_left = Vector2(0, -4.181)
+	var pos_down = Vector2(-4.181, 0)
+	var pos_up = Vector2(4.181, 0)
+	
+	if velocity.x > 0: # Move right
+		adjust_body("right", false, 90, pos_right)
+	elif velocity.x < 0: # Move left
+		adjust_body("right", true, 90, pos_left)
+	elif velocity.y > 0: # Move down
+    	adjust_body("up", true, 0, pos_down)
+	elif velocity.y < 0: # Move up
+		adjust_body("up", false, 0, pos_up)
+
+func adjust_body(anim, is_flip, rot, pos):
+		$Body.animation = anim
+		$Body.flip_h = is_flip
+		$Body.flip_v = is_flip
+		$BodyCollisionShape.set_rotation_degrees(rot)
+		$BodyCollisionShape.set_position(pos)
+		print($BodyCollisionShape.get_rotation_degrees())
+		print($BodyCollisionShape.get_position())
 
 func shoot():
 	if can_shoot:
@@ -75,7 +90,7 @@ func shoot():
 func start(pos):
     position = pos
     show()
-    $CollisionShape2D.disabled = false
+    $BodyCollisionShape.disabled = false
 
 func _on_GunTimer_timeout():
 	can_shoot = true
