@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://maps/Map01-v2.gd" type="Script" id=1]
 [ext_resource path="res://Terrain/mytiles.tres" type="TileSet" id=2]
-[ext_resource path="res://NPC.tscn" type="PackedScene" id=3]
+[ext_resource path="res://People/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://People/Playerv2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://People/HealthyNPC.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 63.7635, 581.482, 0, 0, 0, 0, 63.7635, 287.561, 0, 0, 0, 0, 349.519, 285.228, 0, 0, 0, 0, 351.852, 421.691, 0, 0, 0, 0, 671.432, 414.693, 0, 0, 0, 0, 671.432, 291.06, 0, 0, 0, 0, 960.687, 286.395, 0, 0, 0, 0, 957.188, 18.1341 )
+"points": PoolVector2Array( 0, 0, 0, 0, 59.5689, 565.565, 0, 0, 0, 0, 66.567, 291.718, 0, 0, 0, 0, 352.323, 283.595, 0, 0, 0, 0, 352.323, 410.075, 0, 0, 0, 0, 673.07, 410.075, 0, 0, 0, 0, 795.536, 412.396, 0, 0, 0, 0, 797.869, 545.839, 0, 0, 0, 0, 958.826, 538.876, 0, 0, 0, 0, 955.327, 23.6721 )
 }
 
 [node name="Map01-v2" type="Node2D"]
@@ -22,7 +23,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="NPC" parent="TileMap" instance=ExtResource( 3 )]
 
 [node name="Playerstartposition" type="Position2D" parent="TileMap"]
-position = Vector2( 400, 67.138 )
+position = Vector2( 959.849, 284.079 )
 scale = Vector2( 1, 0.954297 )
 
 [node name="Playerv2" parent="TileMap" instance=ExtResource( 4 )]
@@ -33,9 +34,14 @@ position = Vector2( 300, 60 )
 [node name="Paths" type="Node" parent="."]
 
 [node name="Path2D" type="Path2D" parent="Paths"]
+position = Vector2( 0, -0.325386 )
+scale = Vector2( 1, 1.00515 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D"]
-position = Vector2( 63.7635, 581.482 )
-rotation = -1.5708
+position = Vector2( 59.5689, 565.565 )
+rotation = -1.54525
+
+[node name="HealthyNPC" parent="Paths/Path2D/PathFollow2D" instance=ExtResource( 5 )]
+z_index = 0
 [connection signal="shoot" from="TileMap/Playerv2" to="." method="_on_Player_shoot"]

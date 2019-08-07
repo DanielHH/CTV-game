@@ -2,7 +2,8 @@ extends Node2D
 
 func _ready():
 	$TileMap/Playerv2.start($TileMap/Playerstartposition.position)
-	$TileMap/NPC.start($TileMap/NPCstartposition.position)
+	#$TileMap/NPC.start($TileMap/NPCstartposition.position)
+	pass
 
 func _on_Player_shoot(bullet, _position, _direction):
 	var b = bullet.instance()

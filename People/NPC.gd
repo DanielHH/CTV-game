@@ -1,23 +1,32 @@
 extends KinematicBody2D
 
-#signal hit
-#signal dead
+signal hit
+signal dead
 
 export (int) var speed
 export (int) var health
 
-var screensize
-
-onready var parent = get_parent()
+var velocity = Vector2()
+var alive = true
 
 func _ready():
-	screensize = get_viewport_rect().size
-	hide()
+	#hide()
+	pass
 
 # Controls
 func _process(delta):
 	if health <= 0:
 		$CollisionShape2D.set_disabled(true)
+		set_z_index(0)
+
+func control(delta):
+	pass
+		
+func _physics_process(delta):
+	if not alive:
+		return
+	control(delta)
+	move_and_slide(velocity)
 
 func take_damage(damage):
 	health -= damage
@@ -26,12 +35,13 @@ func take_damage(damage):
 		$getshottimer.start()
 	else:
 		$AnimatedSprite.animation = "die_right"
-	
+
+"""
 # Starting a new game
 func start(pos):
 	position = pos
 	show()
+"""
 
 func _on_getshottimer_timeout():
-	print("walk_right")
 	$AnimatedSprite.animation = "walk_right"
