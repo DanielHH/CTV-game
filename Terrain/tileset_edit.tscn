@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/tileset_complet_cropped.png" type="Texture" id=1]
 [ext_resource path="res://Terrain/wall.gd" type="Script" id=2]
@@ -8,13 +8,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.5597, 15.8045 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 36.1281, 25.0665 )
-
 [node name="tileset_edit" type="Node2D"]
 
 [node name="wall" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -32,6 +28,7 @@ shape = SubResource( 1 )
 
 [node name="floor" type="Sprite" parent="."]
 position = Vector2( 56, 16 )
+z_index = -1
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 32, 32, 32 )
@@ -44,16 +41,4 @@ position = Vector2( 112, 16 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="exit"]
-position = Vector2( -2, -1 )
-scale = Vector2( 0.9375, 0.46875 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="exit/StaticBody2D"]
-position = Vector2( 2.21096, -13.5867 )
-scale = Vector2( 0.943494, 0.781177 )
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
 }

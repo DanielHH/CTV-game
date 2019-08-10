@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if not alive:
 		return
 	control(delta)
-	move_and_slide(velocity)
+	move_and_collide(velocity)
 
 func take_damage(damage):
 	health -= damage
@@ -34,6 +34,7 @@ func take_damage(damage):
 		$AnimatedSprite.animation = "get_shot"
 		$getshottimer.start()
 	else:
+		alive = false
 		$AnimatedSprite.animation = "die_right"
 
 """

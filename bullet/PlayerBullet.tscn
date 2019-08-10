@@ -21,4 +21,3 @@ texture = ExtResource( 3 )
 position = Vector2( 6.2727, 0 )
 rotation = 4.71239
 shape = SubResource( 1 )
-one_way_collision = true
