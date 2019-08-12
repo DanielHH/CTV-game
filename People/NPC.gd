@@ -15,6 +15,7 @@ var alive = true
 
 func _ready():
 	if not infected:
+		$InfectionArea/CollisionShape2D.set_disabled(true)
 		$InfectedSmoke.set_visible(false)
 		speed = 100
 
@@ -51,5 +52,17 @@ func start(pos):
 	show()
 """
 
+func get_infected():
+	if not infected:
+		infected = true
+		$InfectedSmoke.set_visible(true)
+		$InfectionArea/CollisionShape2D.set_disabled(false)
+		speed = 60
+
 func _on_getshottimer_timeout():
 	$AnimatedSprite.animation = "walk_right"
+
+func _on_InfectionArea_body_entered(body):
+	if body.has_method('get_infected'):
+		body.get_infected()
+	

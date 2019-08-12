@@ -13,7 +13,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 150.803, 474.748, 0, 0, 0, 0, 225.376, 476.335, 0, 0, 0, 0, 225.376, 546.148, 0, 0, 0, 0, 966.353, 544.561, 0, 0, 0, 0, 969.526, 11.4392 )
+"points": PoolVector2Array( 0, 0, 0, 0, 150.803, 474.748, 0, 0, 0, 0, 225.376, 476.335, 0, 0, 0, 0, 225.376, 546.148, 0, 0, 0, 0, 230.138, 566.775, 0, 0, 0, 0, 506.219, 544.562, 0, 0, 0, 0, 512.566, 417.628, 0, 0, 0, 0, 352.312, 403.348, 0, 0, 0, 0, 344.378, 287.52, 0, 0, 0, 0, 977.461, 287.52, 0, 0, 0, 0, 977.461, 5.09223 )
 }
 
 [node name="Map01-v2" type="Node2D"]
@@ -50,7 +50,7 @@ curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path2D2"]
 position = Vector2( 150.803, 474.748 )
-rotation = 0.0212614
+rotation = 0.0212537
 
 [node name="NPC" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource( 4 )]
 infected = true
