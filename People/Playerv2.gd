@@ -3,6 +3,8 @@ extends KinematicBody2D
 signal hit
 signal shoot
 signal dead
+signal reloading
+signal bullets_left
 
 export (PackedScene) var Bullet
 export (int) var speed
@@ -13,6 +15,7 @@ var screensize
 
 var can_shoot = true
 var alive = true
+var bullets_left = 8
 
 ### Introduce reload action
 func _ready():
@@ -34,6 +37,8 @@ func _process(delta):
 		velocity.y -= 1
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	if Input.is_action_just_pressed("reload"):
+		reload()
 
 	if (velocity.length() > 0):
 		velocity = velocity.normalized() * speed
@@ -61,21 +66,34 @@ func _process(delta):
 
 func shoot():
 	if can_shoot:
+		if bullets_left > 0:
+			bullets_left -= 1
+			can_shoot = false
+			$GunTimer.start()
+			var dir = Vector2(1, 0)
+			var pos = $Muzzleright.global_position
+			if $Body.animation == "right":
+				if $Body.flip_h == true:
+					dir = Vector2(-1, 0)
+					pos = $Muzzleleft.global_position
+			elif $Body.animation == "up":
+				dir = Vector2(0, -1)
+				pos = $Muzzleup.global_position
+				if $Body.flip_v == true:
+					dir = Vector2(0, 1)
+					pos = $Muzzledown.global_position
+			emit_signal('shoot', Bullet, pos, dir, bullets_left)
+		else:
+			pass # Emit click sound
+
+func reload():
+	if bullets_left < 8:
+		$GunTimer.stop()
 		can_shoot = false
-		$GunTimer.start()
-		var dir = Vector2(1, 0)
-		var pos = $Muzzleright.global_position
-		if $Body.animation == "right":
-			if $Body.flip_h == true:
-				dir = Vector2(-1, 0)
-				pos = $Muzzleleft.global_position
-		elif $Body.animation == "up":
-			dir = Vector2(0, -1)
-			pos = $Muzzleup.global_position
-			if $Body.flip_v == true:
-				dir = Vector2(0, 1)
-				pos = $Muzzledown.global_position
-		emit_signal('shoot', Bullet, pos, dir)
+		$ReloadTimer.start()
+		emit_signal('reloading')
+	else:
+		pass
 
 # Starting a new game
 func start(pos):
@@ -92,3 +110,9 @@ func adjust_body(anim, is_flip, rot, pos):
 
 func _on_GunTimer_timeout():
 	can_shoot = true
+
+func _on_ReloadTimer_timeout():
+	print("reloadtimer end")
+	can_shoot = true
+	bullets_left = 8
+	emit_signal('bullets_left', bullets_left)

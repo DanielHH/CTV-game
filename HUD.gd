@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 signal start_game
-
 signal reset_level
 
 var fresh_game = true
@@ -25,6 +24,12 @@ func show_game_over():
 	$StartButton.text = "Restart"
 	$MessageLabel.show()
 	$StartButton.show()
+	
+func update_chamber(bullets_left):
+	$BulletLabel.text = "Chamber: " + bullets_left + "/8"
+	
+func reloading():
+	$BulletLabel.text = "Reloading..."
 
 func _on_StartButton_pressed():
 	if fresh_game:

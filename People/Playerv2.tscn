@@ -84,6 +84,7 @@ shape = SubResource( 2 )
 
 [node name="GunTimer" type="Timer" parent="."]
 wait_time = 0.75
+one_shot = true
 
 [node name="Muzzleright" type="Position2D" parent="."]
 position = Vector2( 49, 12 )
@@ -99,4 +100,9 @@ rotation = 3.14159
 [node name="Muzzledown" type="Position2D" parent="."]
 position = Vector2( -12, 43.132 )
 rotation = 1.5708
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
