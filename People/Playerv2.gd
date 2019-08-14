@@ -14,7 +14,7 @@ var screensize
 var can_shoot = true
 var alive = true
 
-
+### Introduce reload action
 func _ready():
 	screensize = get_viewport_rect().size
 	$GunTimer.wait_time = gun_cooldown

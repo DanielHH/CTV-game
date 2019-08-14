@@ -14,10 +14,10 @@ var velocity = Vector2()
 var alive = true
 
 func _ready():
+	speed = 0
 	if not infected:
 		$InfectionArea/CollisionShape2D.set_disabled(true)
 		$InfectedSmoke.set_visible(false)
-		speed = 100
 
 # Controls
 func _process(delta):
@@ -45,18 +45,17 @@ func take_damage(damage):
 		alive = false
 		$AnimatedSprite.animation = "die_right"
 
-"""
-# Starting a new game
-func start(pos):
-	position = pos
-	show()
-"""
-
 func get_infected():
 	if not infected:
 		infected = true
 		$InfectedSmoke.set_visible(true)
 		$InfectionArea/CollisionShape2D.set_disabled(false)
+		speed = 60
+
+func start_walking():
+	if not infected:
+		speed = 100
+	else:
 		speed = 60
 
 func _on_getshottimer_timeout():
@@ -65,4 +64,3 @@ func _on_getshottimer_timeout():
 func _on_InfectionArea_body_entered(body):
 	if body.has_method('get_infected'):
 		body.get_infected()
-	

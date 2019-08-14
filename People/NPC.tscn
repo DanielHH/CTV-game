@@ -2,18 +2,18 @@
 
 [ext_resource path="res://People/NPC.gd" type="Script" id=1]
 [ext_resource path="res://usable_stripes/officer_die/officer_die_strip_right.png" type="Texture" id=2]
-[ext_resource path="res://usable_stripes/officer_walk/officer_1.png" type="Texture" id=3]
-[ext_resource path="res://usable_stripes/officer_walk/officer_2.png" type="Texture" id=4]
-[ext_resource path="res://usable_stripes/officer_walk/officer_3.png" type="Texture" id=5]
-[ext_resource path="res://usable_stripes/officer_walk/officer_4.png" type="Texture" id=6]
-[ext_resource path="res://usable_stripes/officer_walk/officer_5.png" type="Texture" id=7]
-[ext_resource path="res://usable_stripes/officer_walk/officer_6.png" type="Texture" id=8]
-[ext_resource path="res://usable_stripes/officer_walk/officer_7.png" type="Texture" id=9]
-[ext_resource path="res://usable_stripes/officer_walk/officer_8.png" type="Texture" id=10]
-[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up.png" type="Texture" id=11]
-[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up2.png" type="Texture" id=12]
-[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up3.png" type="Texture" id=13]
-[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up4.png" type="Texture" id=14]
+[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up.png" type="Texture" id=3]
+[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up2.png" type="Texture" id=4]
+[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up3.png" type="Texture" id=5]
+[ext_resource path="res://usable_stripes/officer_die/officer_die_strip_up4.png" type="Texture" id=6]
+[ext_resource path="res://usable_stripes/officer_walk/officer_1.png" type="Texture" id=7]
+[ext_resource path="res://usable_stripes/officer_walk/officer_2.png" type="Texture" id=8]
+[ext_resource path="res://usable_stripes/officer_walk/officer_3.png" type="Texture" id=9]
+[ext_resource path="res://usable_stripes/officer_walk/officer_4.png" type="Texture" id=10]
+[ext_resource path="res://usable_stripes/officer_walk/officer_5.png" type="Texture" id=11]
+[ext_resource path="res://usable_stripes/officer_walk/officer_6.png" type="Texture" id=12]
+[ext_resource path="res://usable_stripes/officer_walk/officer_7.png" type="Texture" id=13]
+[ext_resource path="res://usable_stripes/officer_walk/officer_8.png" type="Texture" id=14]
 [ext_resource path="res://usable_stripes/officer_die/officer_die_strip_right4.png" type="Texture" id=15]
 [ext_resource path="res://usable_stripes/officer_walk/officerup_1.png" type="Texture" id=16]
 [ext_resource path="res://usable_stripes/officer_walk/officerup_2.png" type="Texture" id=17]
@@ -47,15 +47,15 @@ animations = [ {
 "name": "get_shot",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "die_up",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
@@ -96,7 +96,6 @@ health = 100
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "walk_right"
-frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -111,7 +110,7 @@ position = Vector2( 15, 0 )
 scale = Vector2( 0.4, 0.2 )
 z_index = -1
 frames = SubResource( 3 )
-frame = 7
+frame = 15
 playing = true
 
 [node name="InfectionArea" type="Area2D" parent="."]

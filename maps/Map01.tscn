@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://maps/Map01-v2.gd" type="Script" id=1]
+[ext_resource path="res://maps/Map01.gd" type="Script" id=1]
 [ext_resource path="res://Terrain/mytiles.tres" type="TileSet" id=2]
 [ext_resource path="res://People/Playerv2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://People/NPC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 57.9824, 568.141, 0, 0, 0, 0, 61.8595, 287.851, 0, 0, 0, 0, 348.762, 285.28, 0, 0, 0, 0, 347.47, 408.71, 0, 0, 0, 0, 512.891, 412.567, 0, 0, 0, 0, 509.014, 550.141, 0, 0, 0, 0, 802.379, 543.712, 0, 0, 0, 0, 804.964, 417.71, 0, 0, 0, 0, 666.682, 411.282, 0, 0, 0, 0, 669.266, 285.28, 0, 0, 0, 0, 835.98, 287.851, 0, 0, 0, 0, 835.98, 157.992, 0, 0, 0, 0, 188.51, 155.421, 0, 0, 0, 0, 193.68, 60.2763, 0, 0, 0, 0, 958.754, 64.1335, 0, 0, 0, 0, 957.462, 8.84698 )
+"points": PoolVector2Array( 0, 0, 0, 0, 57.9824, 568.141, 0, 0, 0, 0, 61.8595, 287.851, 0, 0, 0, 0, 835.98, 287.851, 0, 0, 0, 0, 835.98, 157.992, 0, 0, 0, 0, 188.51, 155.421, 0, 0, 0, 0, 193.68, 60.2763, 0, 0, 0, 0, 958.754, 64.1335, 0, 0, 0, 0, 957.462, 8.84698 )
 }
 
 [sub_resource type="Curve2D" id=2]
@@ -20,6 +21,7 @@ _data = {
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -43,7 +45,9 @@ position = Vector2( 57.9824, 568.141 )
 rotation = -1.55696
 loop = false
 
-[node name="NPC" parent="Paths/Path2D/PathFollow2D" instance=ExtResource( 4 )]
+[node name="NPC" parent="Paths/Path2D/PathFollow2D" groups=[
+"NPCs",
+] instance=ExtResource( 4 )]
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
 curve = SubResource( 2 )
@@ -52,9 +56,16 @@ curve = SubResource( 2 )
 position = Vector2( 150.803, 474.748 )
 rotation = 0.0212537
 
-[node name="NPC" parent="Paths/Path2D2/PathFollow2D" instance=ExtResource( 4 )]
+[node name="NPC" parent="Paths/Path2D2/PathFollow2D" groups=[
+"NPCs",
+] instance=ExtResource( 4 )]
 infected = true
 
 [node name="Exit" parent="." instance=ExtResource( 5 )]
 position = Vector2( 960.553, 14.5091 )
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
 [connection signal="shoot" from="TileMap/Playerv2" to="." method="_on_Player_shoot"]
+[connection signal="game_over" from="Exit" to="." method="_on_Infected_Exit_game_over"]
+[connection signal="reset_level" from="HUD" to="." method="reset_level"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
