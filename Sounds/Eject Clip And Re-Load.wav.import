@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Eject Clip And Re-Load.wav-f568f4f81e96e11911f1b2414be7536d.sample"
+
+[deps]
+
+source_file="res://Sounds/Eject Clip And Re-Load.wav"
+dest_files=[ "res://.import/Eject Clip And Re-Load.wav-f568f4f81e96e11911f1b2414be7536d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

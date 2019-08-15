@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/barreta_m9.wav-19027a191e05545d6008d77fd452719d.sample"
+
+[deps]
+
+source_file="res://Sounds/barreta_m9.wav"
+dest_files=[ "res://.import/barreta_m9.wav-19027a191e05545d6008d77fd452719d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

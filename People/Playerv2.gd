@@ -56,14 +56,20 @@ func _process(delta):
 	var col_down = Vector2(-4.181, 0)
 	var col_up = Vector2(4.181, 0)
 	
-	if velocity.x > 0: # Move right
-		adjust_body("right", false, 90, col_right)
-	elif velocity.x < 0: # Move left
-		adjust_body("right", true, 90, col_left)
-	elif velocity.y > 0: # Move down
-    	adjust_body("up", true, 0, col_down)
-	elif velocity.y < 0: # Move up
-		adjust_body("up", false, 0, col_up)
+	if velocity != Vector2(0, 0):
+		if not $Sounds/StepSound.is_playing():
+			$Sounds/StepSound.play()
+		if velocity.x > 0: # Move right
+			adjust_body("right", false, 90, col_right)
+		elif velocity.x < 0: # Move left
+			adjust_body("right", true, 90, col_left)
+		elif velocity.y > 0: # Move down
+	    	adjust_body("up", true, 0, col_down)
+		elif velocity.y < 0: # Move up
+			adjust_body("up", false, 0, col_up)
+	else:
+		if $Sounds/StepSound.is_playing():
+			$Sounds/StepSound.stop()
 
 func shoot():
 	if can_shoot:
@@ -72,20 +78,21 @@ func shoot():
 			can_shoot = false
 			$GunTimer.start()
 			var dir = Vector2(1, 0)
-			var pos = $Muzzleright.global_position
+			var pos = $Muzzle/Muzzleright.global_position
 			if $Body.animation == "right":
 				if $Body.flip_h == true:
 					dir = Vector2(-1, 0)
-					pos = $Muzzleleft.global_position
+					pos = $Muzzle/Muzzleleft.global_position
 			elif $Body.animation == "up":
 				dir = Vector2(0, -1)
-				pos = $Muzzleup.global_position
+				pos = $Muzzle/Muzzleup.global_position
 				if $Body.flip_v == true:
 					dir = Vector2(0, 1)
-					pos = $Muzzledown.global_position
+					pos = $Muzzle/Muzzledown.global_position
 			emit_signal('shoot', Bullet, pos, dir, bullets_left)
+			$Sounds/ShotSound.play()
 		else:
-			pass # Emit click sound
+			$Sounds/ClickSound.play()
 
 func reload():
 	if mags_left > 0:
@@ -95,6 +102,7 @@ func reload():
 			can_shoot = false
 			$ReloadTimer.start()
 			emit_signal('reloading', mags_left)
+			$Sounds/ReloadSound.play()
 	else:
 		pass
 
