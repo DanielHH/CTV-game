@@ -4,6 +4,7 @@ onready var parent = get_parent()
 
 signal hit
 signal dead
+signal is_infected
 
 export (int) var speed
 export (int) var health
@@ -43,14 +44,16 @@ func take_damage(damage):
 		$getshottimer.start()
 	else:
 		alive = false
+		emit_signal("dead", infected)
 		$AnimatedSprite.animation = "die_right"
 
-func get_infected():
+func become_infected():
 	if not infected:
 		infected = true
 		$InfectedSmoke.set_visible(true)
 		$InfectionArea/CollisionShape2D.set_disabled(false)
 		speed = 60
+		emit_signal("is_infected")
 
 func start_walking():
 	if not infected:
@@ -63,4 +66,8 @@ func _on_getshottimer_timeout():
 
 func _on_InfectionArea_body_entered(body):
 	if body.has_method('get_infected'):
-		body.get_infected()
+		body.become_infected()
+
+func is_infected():
+	if infected:
+		emit_signal("is_infected")

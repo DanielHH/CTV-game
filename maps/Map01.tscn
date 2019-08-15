@@ -14,7 +14,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 150.803, 474.748, 0, 0, 0, 0, 225.376, 476.335, 0, 0, 0, 0, 225.376, 546.148, 0, 0, 0, 0, 230.138, 566.775, 0, 0, 0, 0, 506.219, 544.562, 0, 0, 0, 0, 512.566, 417.628, 0, 0, 0, 0, 352.312, 403.348, 0, 0, 0, 0, 344.378, 287.52, 0, 0, 0, 0, 977.461, 287.52, 0, 0, 0, 0, 977.461, 5.09223 )
+"points": PoolVector2Array( 0, 0, 0, 0, 150.803, 474.748, 0, 0, 0, 0, 225.376, 476.335, 0, 0, 0, 0, 225.376, 546.148, 0, 0, 0, 0, 230.138, 566.775, 0, 0, 0, 0, 506.219, 544.562, 0, 0, 0, 0, 512.566, 417.628, 0, 0, 0, 0, 352.312, 403.348, 0, 0, 0, 0, 344.378, 287.52, 0, 0, 0, 0, 965.502, 287.659, 0, 0, 0, 0, 961.469, 13.4174 )
 }
 
 [node name="Map01-v2" type="Node2D"]
@@ -59,6 +59,7 @@ rotation = 0.0212537
 [node name="NPC" parent="Paths/Path2D2/PathFollow2D" groups=[
 "NPCs",
 ] instance=ExtResource( 4 )]
+speed = 600
 infected = true
 
 [node name="Exit" parent="." instance=ExtResource( 5 )]
@@ -68,6 +69,9 @@ position = Vector2( 960.553, 14.5091 )
 [connection signal="bullets_left" from="TileMap/Playerv2" to="." method="_on_reloaded"]
 [connection signal="reloading" from="TileMap/Playerv2" to="." method="_on_Playerv2_reloading"]
 [connection signal="shoot" from="TileMap/Playerv2" to="." method="_on_Player_shoot"]
+[connection signal="dead" from="Paths/Path2D/PathFollow2D/NPC" to="." method="_on_NPC_dead"]
+[connection signal="dead" from="Paths/Path2D2/PathFollow2D/NPC" to="." method="_on_NPC_dead"]
+[connection signal="is_infected" from="Paths/Path2D2/PathFollow2D/NPC" to="." method="_on_NPC_is_infected"]
 [connection signal="game_over" from="Exit" to="." method="_on_Infected_Exit_game_over"]
 [connection signal="reset_level" from="HUD" to="." method="reset_level"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

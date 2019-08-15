@@ -14,7 +14,7 @@ export (int) var mags_left
 
 var screensize
 
-var can_shoot = true
+var can_shoot = false
 var alive = true
 var bullets_left = 8
 

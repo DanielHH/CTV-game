@@ -9,7 +9,7 @@ func escape(body):
 	body.free()
 
 func _on_Exit_body_entered(body):
-	if body.has_method('get_infected'):
+	if body.has_method('become_infected'):
 		if body.infected:
 			print("Hella Nawww") # GAME OVER!
 			emit_signal("game_over")
