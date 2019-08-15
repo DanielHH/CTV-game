@@ -10,6 +10,7 @@ export (PackedScene) var Bullet
 export (int) var speed
 export (int) var health
 export (float) var gun_cooldown
+export (int) var mags_left
 
 var screensize
 
@@ -87,11 +88,13 @@ func shoot():
 			pass # Emit click sound
 
 func reload():
-	if bullets_left < 8:
-		$GunTimer.stop()
-		can_shoot = false
-		$ReloadTimer.start()
-		emit_signal('reloading')
+	if mags_left > 0:
+		if bullets_left < 8:
+			mags_left -= 1
+			$GunTimer.stop()
+			can_shoot = false
+			$ReloadTimer.start()
+			emit_signal('reloading', mags_left)
 	else:
 		pass
 

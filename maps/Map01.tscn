@@ -31,6 +31,7 @@ position = Vector2( 959.849, 284.079 )
 scale = Vector2( 1, 0.954297 )
 
 [node name="Playerv2" parent="TileMap" instance=ExtResource( 3 )]
+mags_left = 3
 
 [node name="Paths" type="Node" parent="."]
 

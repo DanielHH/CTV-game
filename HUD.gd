@@ -26,7 +26,12 @@ func show_game_over():
 	$StartButton.show()
 	
 func update_chamber(bullets_left):
+	bullets_left = str(bullets_left)
 	$BulletLabel.text = "Chamber: " + bullets_left + "/8"
+
+func update_mags(mags_left):
+	mags_left = str(mags_left)
+	$MagLabel.text = "Mags: " + mags_left
 	
 func reloading():
 	$BulletLabel.text = "Reloading..."
