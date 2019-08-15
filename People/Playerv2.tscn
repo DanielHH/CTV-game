@@ -116,6 +116,7 @@ rotation = 3.14159
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 43 )
+attenuation = 10.5561
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 44 )
@@ -125,5 +126,6 @@ stream = ExtResource( 45 )
 
 [node name="StepSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 46 )
+attenuation = 13.4543
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
