@@ -4,12 +4,13 @@ signal hit
 signal shoot
 signal dead
 signal reloading
-signal bullets_left
+signal reloaded
 
 export (PackedScene) var Bullet
 export (int) var speed
 export (int) var health
 export (float) var gun_cooldown
+export (float) var reload_time
 export (int) var mags_left
 
 var screensize
@@ -20,9 +21,10 @@ var bullets_left = 8
 
 ### Introduce reload action
 func _ready():
-	screensize = get_viewport_rect().size
 	$GunTimer.wait_time = gun_cooldown
-	hide()
+	$ReloadTimer.wait_time = reload_time
+	screensize = get_viewport_rect().size
+	#hide()
 
 # Controls
 func _process(delta):
@@ -95,16 +97,15 @@ func shoot():
 			$Sounds/ClickSound.play()
 
 func reload():
-	if mags_left > 0:
-		if bullets_left < 8:
-			mags_left -= 1
-			$GunTimer.stop()
-			can_shoot = false
-			$ReloadTimer.start()
-			emit_signal('reloading', mags_left)
-			$Sounds/ReloadSound.play()
-	else:
-		pass
+	if$ReloadTimer.is_stopped():
+		if mags_left > 0:
+			if bullets_left < 8:
+				mags_left -= 1
+				$GunTimer.stop()
+				can_shoot = false
+				$ReloadTimer.start()
+				emit_signal('reloading', mags_left)
+				$Sounds/ReloadSound.play()
 
 # Starting a new game
 func start(pos):
@@ -123,7 +124,6 @@ func _on_GunTimer_timeout():
 	can_shoot = true
 
 func _on_ReloadTimer_timeout():
-	print("reloadtimer end")
 	can_shoot = true
 	bullets_left = 8
-	emit_signal('bullets_left', bullets_left)
+	emit_signal('reloaded', bullets_left)

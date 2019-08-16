@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal start_game
+signal start_level
 signal reset_level
 
 var fresh_game = true
@@ -39,7 +39,7 @@ func reloading():
 func _on_StartButton_pressed():
 	if fresh_game:
 		$StartButton.hide()
-		emit_signal("start_game")
+		emit_signal("start_level")
 		fresh_game = false
 	else:
 		emit_signal("reset_level")

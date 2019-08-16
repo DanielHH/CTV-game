@@ -15,6 +15,7 @@ position = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 48, 32, 32 )
+region_filter_clip = true
 script = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall"]
@@ -39,6 +40,7 @@ __meta__ = {
 [node name="exit" type="Sprite" parent="."]
 position = Vector2( 112, 16 )
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 32 )
 __meta__ = {
 "_edit_group_": true
 }

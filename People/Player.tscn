@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=2]
 
-[ext_resource path="res://People/Playerv2.gd" type="Script" id=1]
+[ext_resource path="res://People/Player.gd" type="Script" id=1]
 [ext_resource path="res://bullet/PlayerBullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_0.png" type="Texture" id=3]
 [ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_1.png" type="Texture" id=4]
@@ -64,7 +64,7 @@ animations = [ {
 radius = 15.7558
 height = 10.3113
 
-[node name="Playerv2" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
 position = Vector2( 0.440125, -2.20064 )
 z_index = 1
 script = ExtResource( 1 )
@@ -74,7 +74,8 @@ __meta__ = {
 Bullet = ExtResource( 2 )
 speed = 150
 health = 100
-gun_cooldown = 0.4
+gun_cooldown = 0.25
+reload_time = 2.7
 
 [node name="Body" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
@@ -87,11 +88,9 @@ rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="GunTimer" type="Timer" parent="."]
-wait_time = 0.75
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
-wait_time = 2.7
 one_shot = true
 
 [node name="Muzzle" type="Node2D" parent="."]
@@ -113,6 +112,7 @@ position = Vector2( -53.695, -12 )
 rotation = 3.14159
 
 [node name="Sounds" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 43 )

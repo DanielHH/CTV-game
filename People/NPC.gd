@@ -45,6 +45,7 @@ func take_damage(damage):
 	else:
 		alive = false
 		emit_signal("dead", infected)
+		$getshottimer.stop()
 		$AnimatedSprite.animation = "die_right"
 
 func become_infected():
@@ -59,13 +60,13 @@ func start_walking():
 	if not infected:
 		speed = 100
 	else:
-		speed = 60
+		speed = 125
 
 func _on_getshottimer_timeout():
 	$AnimatedSprite.animation = "walk_right"
 
 func _on_InfectionArea_body_entered(body):
-	if body.has_method('get_infected'):
+	if body.has_method('become_infected'):
 		body.become_infected()
 
 func is_infected():
