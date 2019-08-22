@@ -27,7 +27,7 @@ func show_game_over():
 	
 func update_chamber(bullets_left):
 	bullets_left = str(bullets_left)
-	$BulletLabel.text = "Chamber: " + bullets_left + "/8"
+	$BulletLabel.text = "Gun: " + bullets_left + "/8"
 
 func update_mags(mags_left):
 	mags_left = str(mags_left)

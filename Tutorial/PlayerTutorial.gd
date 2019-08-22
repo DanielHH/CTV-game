@@ -7,6 +7,7 @@ signal reloading
 signal reloaded
 signal has_walked
 signal first_shot
+signal first_reload
 
 export (PackedScene) var Bullet
 export (int) var speed
@@ -17,10 +18,12 @@ export (int) var mags_left
 
 var screensize
 
-var can_shoot = false
 var can_walk = false
-var had_first_shot = false
+var can_shoot = false
+var can_reload = false
 var has_walked = false
+var had_first_shot = false
+var had_first_reload = false
 var alive = true
 var bullets_left = 8
 
@@ -109,15 +112,19 @@ func shoot():
 			$Sounds/ClickSound.play()
 
 func reload():
-	if$ReloadTimer.is_stopped():
-		if mags_left > 0:
-			if bullets_left < 8:
-				mags_left -= 1
-				$GunTimer.stop()
-				can_shoot = false
-				$ReloadTimer.start()
-				emit_signal('reloading', mags_left)
-				$Sounds/ReloadSound.play()
+	if can_reload:
+		if$ReloadTimer.is_stopped():
+			if mags_left > 0:
+				if bullets_left < 8:
+					mags_left -= 1
+					$GunTimer.stop()
+					can_shoot = false
+					$ReloadTimer.start()
+					emit_signal('reloading', mags_left)
+					$Sounds/ReloadSound.play()
+					if not had_first_reload:
+						emit_signal('first_reload')
+						had_first_reload = true
 
 # Starting a new game
 func start(pos):
