@@ -3,6 +3,8 @@ extends Node2D
 var infected_left = 0
 
 func _ready():
+	$NPC/AnimatedSprite._set_playing(false)
+	$NPC.is_infected()
 	get_tree().call_group("NPCs", "is_infected")
 	get_tree().call_group("NPCs", "stand_still")
 	get_tree().call_group("NPCs", "hide")
@@ -30,7 +32,7 @@ func _start_level():
 	yield($TutorialCanvas/MessageTimer, "timeout")
 	$TutorialCanvas.show_timed_message("He was sent by the company to contain this... mess.")
 	yield($TutorialCanvas/MessageTimer, "timeout")
-	$TutorialCanvas.show_triggered_message("To walk around with Hector use the arrow keys.")
+	$TutorialCanvas.show_triggered_message("Use the arrow keys to walk around.")
 	$Player.can_walk = true
 
 func _reset_level():
@@ -45,20 +47,20 @@ func _on_NPC_dead(is_infected):
 
 func _on_NPC_is_infected():
 	infected_left += 1
-	print(infected_left)
+	$TutorialCanvas.show_timed_message("Oh shit! Another one got infected!")
 
 func _on_Player_has_walked():
 	$TutorialCanvas/MessageTimer.start()
 	yield($TutorialCanvas/MessageTimer, "timeout")
 	$TutorialCanvas.show_timed_message("Great job walking.")
 	yield($TutorialCanvas/MessageTimer, "timeout")
-	$TutorialCanvas.show_triggered_message("Now press SPACEBAR to shoot.")
+	$TutorialCanvas.show_timed_message("See that 'smoky' guy? He's infected")
+	yield($TutorialCanvas/MessageTimer, "timeout")
+	$TutorialCanvas.show_triggered_message("Tap SPACEBAR to shoot him.")
 	$Player.can_shoot = true
 
 func _on_Player_first_shot():
-	$TutorialCanvas/MessageTimer.start()
-	yield($TutorialCanvas/MessageTimer, "timeout")
-	$TutorialCanvas.show_timed_message("Those were some fine shots.")
+	$TutorialCanvas.show_timed_message("Fine shooting!")
 	yield($TutorialCanvas/MessageTimer, "timeout")
 	$TutorialCanvas.show_timed_message("You may have noticed your gun carries limited ammo.")
 	yield($TutorialCanvas/MessageTimer, "timeout")
@@ -70,6 +72,6 @@ func _on_Player_first_reload():
 	yield($TutorialCanvas/MessageTimer, "timeout")
 	$TutorialCanvas.show_timed_message("Great reload! Notice your mags are also finite?")
 	yield($TutorialCanvas/MessageTimer, "timeout")
-	$TutorialCanvas.show_timed_message("Woah! That.. 'smoky' guy! He's infected! Put him down!")
+	$TutorialCanvas.show_timed_message("Woah! Don't let the infected reach the Exit")
 	get_tree().call_group("NPCs", "show")
 	get_tree().call_group("NPCs", "start_walking")
