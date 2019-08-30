@@ -24,6 +24,7 @@ func _ready():
 func _process(delta):
 	if health <= 0:
 		$CollisionShape2D.set_disabled(true)
+		$InfectionArea/CollisionShape2D.set_disabled(true)
 		set_z_index(0)
 
 func control(delta):

@@ -43,7 +43,7 @@ func _on_NPC_dead(is_infected):
 	if is_infected:
 		infected_left -= 1
 		if infected_left == 0:
-			$HUD.show_message("Level Secured")
+			$HUD.show_level_cleared()
 
 func _on_NPC_is_infected():
 	infected_left += 1

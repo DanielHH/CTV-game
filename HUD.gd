@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal start_level
 signal reset_level
+signal next_level
 
 var fresh_game = true
 
@@ -9,21 +10,13 @@ func _ready():
 	pass
 
 func _input(ev):
-	if ev is InputEventKey and $StartButton.is_visible():
+	if ev is InputEventKey and $StartButton.is_visible() and $StartButton.get_text() == "Start":
 		_on_StartButton_pressed()
 
 func show_message(text):
     $MessageLabel.text = text
     $MessageLabel.show()
     $MessageTimer.start()
-
-func show_game_over():
-	show_message("Game Over")
-	yield($MessageTimer, "timeout")
-	$MessageLabel.text = "The Virus got out..."
-	$StartButton.text = "Restart"
-	$MessageLabel.show()
-	$StartButton.show()
 	
 func update_chamber(bullets_left):
 	bullets_left = str(bullets_left)
@@ -41,11 +34,26 @@ func _on_StartButton_pressed():
 		$StartButton.hide()
 		emit_signal("start_level")
 		fresh_game = false
-	else:
+	elif $StartButton.get_text() == "Restart":
 		emit_signal("reset_level")
+	elif $StartButton.get_text() == "Next Level":
+		emit_signal("next_level")
 
 func _on_MessageTimer_timeout():
 	$MessageLabel.hide()
+	
+func show_game_over():
+	show_message("Game Over")
+	yield($MessageTimer, "timeout")
+	$MessageLabel.text = "The Virus got out..."
+	$StartButton.text = "Restart"
+	$MessageLabel.show()
+	$StartButton.show()
 
+func show_level_cleared():
+	$MessageLabel.text = "Level Secured"
+	$StartButton.text = "Next Level"
+	$MessageLabel.show()
+	$StartButton.show()
 
 
