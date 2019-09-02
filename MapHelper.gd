@@ -1,6 +1,7 @@
 extends Node2D
 
 var infected_left = 0
+var reward = 0
 var game_over = false
 
 func _ready():
@@ -35,11 +36,12 @@ func _on_NPC_dead(is_infected):
 	if is_infected:
 		infected_left -= 1
 		if infected_left == 0:
-			$HUD.show_level_cleared()
+			global.total_money += reward
+			$HUD.show_level_cleared(reward)
 
 func _on_NPC_is_infected():
 	infected_left += 1
-	print(infected_left)
+	reward -= 100
 
 func _on_Infected_Exit_game_over():
 	if not game_over:
@@ -50,3 +52,6 @@ func _on_Player_game_over():
 	if not game_over:
 		game_over = true
 		$HUD.show_game_over("Hector got infected")
+
+func _on_NPC_reward():
+	reward += 100

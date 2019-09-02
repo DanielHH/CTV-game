@@ -1,6 +1,6 @@
 extends Node2D
 
-var score
+var total_reward
 
 func _ready():
     pass

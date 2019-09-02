@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://dodge_assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,10 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
 font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
@@ -30,7 +34,7 @@ margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 text = "Contain the Virus!"
 align = 1
-valign = 1
+autowrap = true
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -60,5 +64,15 @@ margin_right = 244.534
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 3 )
 text = "Mags: "
+
+[node name="RewardLabel" type="Label" parent="."]
+margin_left = 720.0
+margin_top = 209.0
+margin_right = 1003.0
+margin_bottom = 234.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

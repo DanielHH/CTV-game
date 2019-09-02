@@ -64,7 +64,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Paths" type="Node2D" parent="MapHelperTutorial"]
-editor/display_folded = true
 
 [node name="Path2D" type="Path2D" parent="MapHelperTutorial/Paths"]
 curve = SubResource( 2 )
@@ -121,9 +120,13 @@ infected = true
 [connection signal="timeout" from="MapHelperTutorial/TutorialCanvas/MessageTimer" to="MapHelperTutorial/TutorialCanvas" method="_on_MessageTimer_timeout"]
 [connection signal="dead" from="MapHelperTutorial/Paths/Path2D/PathFollow2D/NPC" to="MapHelperTutorial" method="_on_NPC_dead"]
 [connection signal="is_infected" from="MapHelperTutorial/Paths/Path2D/PathFollow2D/NPC" to="MapHelperTutorial" method="_on_NPC_is_infected"]
+[connection signal="reward" from="MapHelperTutorial/Paths/Path2D/PathFollow2D/NPC" to="MapHelperTutorial" method="_on_NPC_reward"]
 [connection signal="dead" from="MapHelperTutorial/Paths/Path2D2/PathFollow2D/NPC2" to="MapHelperTutorial" method="_on_NPC_dead"]
 [connection signal="is_infected" from="MapHelperTutorial/Paths/Path2D2/PathFollow2D/NPC2" to="MapHelperTutorial" method="_on_NPC_is_infected"]
+[connection signal="reward" from="MapHelperTutorial/Paths/Path2D2/PathFollow2D/NPC2" to="MapHelperTutorial" method="_on_NPC_reward"]
 [connection signal="dead" from="MapHelperTutorial/Paths/Path2D3/PathFollow2D/NPC3" to="MapHelperTutorial" method="_on_NPC_dead"]
 [connection signal="is_infected" from="MapHelperTutorial/Paths/Path2D3/PathFollow2D/NPC3" to="MapHelperTutorial" method="_on_NPC_is_infected"]
+[connection signal="reward" from="MapHelperTutorial/Paths/Path2D3/PathFollow2D/NPC3" to="MapHelperTutorial" method="_on_NPC_reward"]
 [connection signal="dead" from="MapHelperTutorial/NPC" to="MapHelperTutorial" method="_on_NPC_dead"]
 [connection signal="is_infected" from="MapHelperTutorial/NPC" to="MapHelperTutorial" method="_on_NPC_is_infected"]
+[connection signal="reward" from="MapHelperTutorial/NPC" to="MapHelperTutorial" method="_on_NPC_reward"]

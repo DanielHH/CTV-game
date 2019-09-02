@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Contain The Virus! Testing"
 run/main_scene="res://Main.tscn"
 
+[autoload]
+
+global="*res://global.gd"
+
 [display]
 
 window/size/width=1728

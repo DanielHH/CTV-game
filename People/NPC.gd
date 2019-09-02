@@ -5,6 +5,7 @@ onready var parent = get_parent()
 signal hit
 signal dead
 signal is_infected
+signal reward
 
 export (int) var speed
 export (int) var health
@@ -73,6 +74,7 @@ func _on_InfectionArea_body_entered(body):
 func is_infected():
 	if infected:
 		emit_signal("is_infected")
+	emit_signal("reward")
 
 func stand_still():
 	$AnimatedSprite._set_playing(false)

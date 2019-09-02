@@ -112,6 +112,7 @@ position = Vector2( -53.695, -12 )
 rotation = 3.14159
 
 [node name="Sounds" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 43 )

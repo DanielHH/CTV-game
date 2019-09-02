@@ -96,7 +96,6 @@ health = 100
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "walk_right"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -111,7 +110,7 @@ position = Vector2( 15, 0 )
 scale = Vector2( 0.4, 0.2 )
 z_index = -1
 frames = SubResource( 3 )
-frame = 3
+frame = 11
 playing = true
 
 [node name="InfectionArea" type="Area2D" parent="."]

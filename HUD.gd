@@ -50,7 +50,8 @@ func show_game_over(message):
 	$MessageLabel.show()
 	$StartButton.show()
 
-func show_level_cleared():
+func show_level_cleared(reward):
+	$RewardLabel.text = "$" + str(global.total_money - reward) + " + " + "$" + str(reward)
 	$MessageLabel.text = "Level Secured"
 	$StartButton.text = "Next Level"
 	$MessageLabel.show()
