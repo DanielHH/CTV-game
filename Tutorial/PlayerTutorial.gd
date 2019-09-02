@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal hit
 signal shoot
 signal dead
+signal game_over
 signal reloading
 signal reloaded
 signal has_walked
@@ -26,6 +27,8 @@ var had_first_shot = false
 var had_first_reload = false
 var alive = true
 var bullets_left = 8
+
+var is_npc = false
 
 ### Introduce reload action
 func _ready():
@@ -138,6 +141,12 @@ func adjust_body(anim, is_flip, rot, pos):
 		$Body.flip_v = is_flip
 		$BodyCollisionShape.set_rotation_degrees(rot)
 		$BodyCollisionShape.set_position(pos)
+		
+func become_infected():
+		speed = 0
+		can_shoot = false
+		mags_left = 0
+		emit_signal("game_over")
 
 func _on_GunTimer_timeout():
 	can_shoot = true

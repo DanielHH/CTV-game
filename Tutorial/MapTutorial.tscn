@@ -64,6 +64,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Paths" type="Node2D" parent="MapHelperTutorial"]
+editor/display_folded = true
 
 [node name="Path2D" type="Path2D" parent="MapHelperTutorial/Paths"]
 curve = SubResource( 2 )
@@ -108,6 +109,7 @@ position = Vector2( 1485.17, 764.987 )
 infected = true
 [connection signal="first_reload" from="MapHelperTutorial/Player" to="MapHelperTutorial" method="_on_Player_first_reload"]
 [connection signal="first_shot" from="MapHelperTutorial/Player" to="MapHelperTutorial" method="_on_Player_first_shot"]
+[connection signal="game_over" from="MapHelperTutorial/Player" to="MapHelperTutorial" method="_on_Player_game_over"]
 [connection signal="has_walked" from="MapHelperTutorial/Player" to="MapHelperTutorial" method="_on_Player_has_walked"]
 [connection signal="reloaded" from="MapHelperTutorial/Player" to="MapHelperTutorial" method="_on_Player_reloaded"]
 [connection signal="reloading" from="MapHelperTutorial/Player" to="MapHelperTutorial" method="_on_Player_reloading"]

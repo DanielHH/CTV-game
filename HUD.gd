@@ -42,10 +42,10 @@ func _on_StartButton_pressed():
 func _on_MessageTimer_timeout():
 	$MessageLabel.hide()
 	
-func show_game_over():
-	show_message("Game Over")
+func show_game_over(message):
+	show_message(message)
 	yield($MessageTimer, "timeout")
-	$MessageLabel.text = "The Virus got out..."
+	$MessageLabel.text = "Game Over"
 	$StartButton.text = "Restart"
 	$MessageLabel.show()
 	$StartButton.show()

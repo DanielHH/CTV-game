@@ -5,6 +5,7 @@ signal shoot
 signal dead
 signal reloading
 signal reloaded
+signal game_over
 
 export (PackedScene) var Bullet
 export (int) var speed
@@ -18,6 +19,8 @@ var screensize
 var can_shoot = false
 var alive = true
 var bullets_left = 8
+
+var is_npc = false
 
 ### Introduce reload action
 func _ready():
@@ -119,6 +122,12 @@ func adjust_body(anim, is_flip, rot, pos):
 		$Body.flip_v = is_flip
 		$BodyCollisionShape.set_rotation_degrees(rot)
 		$BodyCollisionShape.set_position(pos)
+		
+func become_infected():
+		speed = 0
+		can_shoot = false
+		mags_left = 0
+		emit_signal("game_over")
 
 func _on_GunTimer_timeout():
 	can_shoot = true

@@ -13,18 +13,17 @@ export (bool) var infected
 
 var velocity = Vector2()
 var alive = true
+var is_npc = true
 
 func _ready():
 	speed = 0
 	if not infected:
-		$InfectionArea/CollisionShape2D.set_disabled(true)
 		$InfectedSmoke.set_visible(false)
 
 # Controls
 func _process(delta):
 	if health <= 0:
 		$CollisionShape2D.set_disabled(true)
-		$InfectionArea/CollisionShape2D.set_disabled(true)
 		set_z_index(0)
 
 func control(delta):
@@ -53,7 +52,6 @@ func become_infected():
 	if not infected:
 		infected = true
 		$InfectedSmoke.set_visible(true)
-		$InfectionArea/CollisionShape2D.set_disabled(false)
 		speed = 120
 		emit_signal("is_infected")
 
@@ -68,8 +66,9 @@ func _on_getshottimer_timeout():
 	$AnimatedSprite.animation = "walk_right"
 
 func _on_InfectionArea_body_entered(body):
-	if body.has_method('become_infected'):
-		body.become_infected()
+	if infected and alive:
+		if body.has_method('become_infected'):
+			body.become_infected()
 
 func is_infected():
 	if infected:

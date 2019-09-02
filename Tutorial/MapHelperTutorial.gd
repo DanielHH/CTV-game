@@ -1,6 +1,7 @@
 extends Node2D
 
 var infected_left = 0
+var game_over = false
 
 func _ready():
 	$NPC/AnimatedSprite._set_playing(false)
@@ -22,9 +23,6 @@ func _on_Player_reloading(mags_left):
 
 func _on_Player_reloaded(bullets_left):
 	$HUD.update_chamber(bullets_left)
-
-func _on_Infected_Exit_game_over():
-	$HUD.show_game_over()
 
 func _start_level():
 	$HUD/MessageLabel.hide()
@@ -75,3 +73,13 @@ func _on_Player_first_reload():
 	$TutorialCanvas.show_timed_message("Woah! Don't let the infected reach the Exit")
 	get_tree().call_group("NPCs", "show")
 	get_tree().call_group("NPCs", "start_walking")
+
+func _on_Infected_Exit_game_over():
+	if not game_over:
+		game_over = true
+		$HUD.show_game_over()
+
+func _on_Player_game_over():
+	if not game_over:
+		game_over = true
+		$HUD.show_game_over("Hector got infected")

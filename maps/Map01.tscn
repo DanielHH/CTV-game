@@ -54,7 +54,6 @@ mags_left = 3
 position = Vector2( 860.09, 499.723 )
 
 [node name="Paths" type="Node" parent="MapHelper"]
-editor/display_folded = true
 
 [node name="Path2D" type="Path2D" parent="MapHelper/Paths"]
 position = Vector2( 0, -0.325386 )
@@ -120,6 +119,7 @@ rotation = 1.48932
 "NPCs",
 ] instance=ExtResource( 7 )]
 position = Vector2( 577.126, 656.214 )
+[connection signal="game_over" from="MapHelper/Player" to="MapHelper" method="_on_Player_game_over"]
 [connection signal="reloaded" from="MapHelper/Player" to="MapHelper" method="_on_Player_reloaded"]
 [connection signal="reloading" from="MapHelper/Player" to="MapHelper" method="_on_Player_reloading"]
 [connection signal="shoot" from="MapHelper/Player" to="MapHelper" method="_on_Player_shoot"]
