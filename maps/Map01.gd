@@ -6,3 +6,5 @@ func _ready():
 
 func _on_HUD_next_level():
 	get_tree().change_scene("res://Tutorial/MapTutorial.tscn")
+	
+

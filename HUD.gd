@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 func _input(ev):
-	if ev is InputEventKey and $StartButton.is_visible() and $StartButton.get_text() == "Start":
+	if Input.is_action_pressed("button_action"):
 		_on_StartButton_pressed()
 
 func show_message(text):
