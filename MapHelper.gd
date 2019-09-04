@@ -38,6 +38,8 @@ func _on_NPC_dead(is_infected):
 		if infected_left == 0:
 			global.total_money += reward
 			$HUD.show_level_cleared(reward)
+	else:
+		reward -= 100
 
 func _on_NPC_is_infected():
 	infected_left += 1
