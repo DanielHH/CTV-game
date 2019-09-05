@@ -17,6 +17,7 @@ export (int) var mags_left
 var screensize
 
 var can_shoot = false
+var can_move = false
 var alive = true
 var bullets_left = 8
 
@@ -31,50 +32,51 @@ func _ready():
 
 # Controls
 func _process(delta):
-	move_and_collide(Vector2(0, 0))
-	var velocity = Vector2() # The player's movement vector.
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
-	if Input.is_action_just_pressed("reload"):
-		reload()
-
-	if (velocity.length() > 0):
-		velocity = velocity.normalized() * speed
-		$Body.play()
-	else:
-		$Body.stop()
+	if can_move:
+		move_and_collide(Vector2(0, 0))
+		var velocity = Vector2() # The player's movement vector.
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		if Input.is_action_just_pressed("shoot"):
+			shoot()
+		if Input.is_action_just_pressed("reload"):
+			reload()
 	
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screensize.x)
-	position.y = clamp(position.y, 0, screensize.y)
-	
-	var col_right = Vector2(0, 4.181)
-	var col_left = Vector2(0, -4.181)
-	var col_down = Vector2(-4.181, 0)
-	var col_up = Vector2(4.181, 0)
-	
-	if velocity != Vector2(0, 0):
-		if not $Sounds/StepSound.is_playing():
-			$Sounds/StepSound.play()
-		if velocity.x > 0: # Move right
-			adjust_body("right", false, 90, col_right)
-		elif velocity.x < 0: # Move left
-			adjust_body("right", true, 90, col_left)
-		elif velocity.y > 0: # Move down
-	    	adjust_body("up", true, 0, col_down)
-		elif velocity.y < 0: # Move up
-			adjust_body("up", false, 0, col_up)
-	else:
-		if $Sounds/StepSound.is_playing():
-			$Sounds/StepSound.stop()
+		if (velocity.length() > 0):
+			velocity = velocity.normalized() * speed
+			$Body.play()
+		else:
+			$Body.stop()
+		
+		position += velocity * delta
+		position.x = clamp(position.x, 0, screensize.x)
+		position.y = clamp(position.y, 0, screensize.y)
+		
+		var col_right = Vector2(0, 4.181)
+		var col_left = Vector2(0, -4.181)
+		var col_down = Vector2(-4.181, 0)
+		var col_up = Vector2(4.181, 0)
+		
+		if velocity != Vector2(0, 0):
+			if not $Sounds/StepSound.is_playing():
+				$Sounds/StepSound.play()
+			if velocity.x > 0: # Move right
+				adjust_body("right", false, 90, col_right)
+			elif velocity.x < 0: # Move left
+				adjust_body("right", true, 90, col_left)
+			elif velocity.y > 0: # Move down
+		    	adjust_body("up", true, 0, col_down)
+			elif velocity.y < 0: # Move up
+				adjust_body("up", false, 0, col_up)
+		else:
+			if $Sounds/StepSound.is_playing():
+				$Sounds/StepSound.stop()
 
 func shoot():
 	if can_shoot:

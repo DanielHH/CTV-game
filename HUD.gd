@@ -10,13 +10,19 @@ func _ready():
 	pass
 
 func _input(ev):
-	if Input.is_action_pressed("button_action"):
+	if Input.is_action_pressed("button_action") and $StartButton.get_text() != "Start":
+		_on_StartButton_pressed()
+	elif Input.is_action_pressed("start_button_action") and $StartButton.get_text() == "Start": # TODO: Pressing next level or restart should not also trigger the start button
 		_on_StartButton_pressed()
 
 func show_message(text):
     $MessageLabel.text = text
     $MessageLabel.show()
     $MessageTimer.start()
+
+func show_start_message(text):
+    $MessageLabel.text = text
+    $MessageLabel.show()
 	
 func update_chamber(bullets_left):
 	bullets_left = str(bullets_left)

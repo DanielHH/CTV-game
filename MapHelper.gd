@@ -25,6 +25,7 @@ func _start_level():
 	$HUD.show_message("Get Ready")
 	yield($HUD/MessageTimer, "timeout")
 	$Player.can_shoot = true
+	$Player.can_move = true
 	get_tree().call_group("NPCs", "start_walking")
 
 func _reset_level():
