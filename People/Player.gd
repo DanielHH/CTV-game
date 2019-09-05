@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
-signal hit
 signal shoot
-signal dead
 signal reloading
 signal reloaded
 signal game_over
