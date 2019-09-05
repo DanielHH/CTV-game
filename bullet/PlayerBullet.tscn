@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://bullet/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://bullet/PlayerBullet.gd" type="Script" id=2]
+[ext_resource path="res://images/pistol.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.75446, 30.4198 )
+
+[node name="PlayerBullet" instance=ExtResource( 1 )]
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 2 )
+speed = 1300
+damage = 40
+lifetime = 2.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 6.2727, 0 )
+rotation = 4.71239
+shape = SubResource( 1 )

@@ -1,0 +1,131 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://Tutorial/PlayerTutorial.gd" type="Script" id=1]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_0.png" type="Texture" id=2]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_1.png" type="Texture" id=3]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_2.png" type="Texture" id=4]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_3.png" type="Texture" id=5]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_4.png" type="Texture" id=6]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_5.png" type="Texture" id=7]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_6.png" type="Texture" id=8]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_7.png" type="Texture" id=9]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_8.png" type="Texture" id=10]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_9.png" type="Texture" id=11]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_10.png" type="Texture" id=12]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_11.png" type="Texture" id=13]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_12.png" type="Texture" id=14]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_13.png" type="Texture" id=15]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_14.png" type="Texture" id=16]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_15.png" type="Texture" id=17]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_16.png" type="Texture" id=18]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_17.png" type="Texture" id=19]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_18.png" type="Texture" id=20]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move/survivor-move_handgun_19.png" type="Texture" id=21]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_0.png" type="Texture" id=22]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_1.png" type="Texture" id=23]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_2.png" type="Texture" id=24]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_3.png" type="Texture" id=25]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_4.png" type="Texture" id=26]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_5.png" type="Texture" id=27]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_6.png" type="Texture" id=28]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_7.png" type="Texture" id=29]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_8.png" type="Texture" id=30]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_9.png" type="Texture" id=31]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_10.png" type="Texture" id=32]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_11.png" type="Texture" id=33]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_12.png" type="Texture" id=34]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_13.png" type="Texture" id=35]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_14.png" type="Texture" id=36]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_15.png" type="Texture" id=37]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_16.png" type="Texture" id=38]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_17.png" type="Texture" id=39]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_18.png" type="Texture" id=40]
+[ext_resource path="res://People/Top_Down_Survivor/handgun/move_up/survivor-move_handgun_19.png" type="Texture" id=41]
+[ext_resource path="res://Sounds/barreta_m9.wav" type="AudioStream" id=42]
+[ext_resource path="res://Sounds/Eject Clip And Re-Load.wav" type="AudioStream" id=43]
+[ext_resource path="res://Sounds/Click.wav" type="AudioStream" id=44]
+[ext_resource path="res://Sounds/Footsteps.wav" type="AudioStream" id=45]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "right",
+"speed": 22.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "up",
+"speed": 22.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 15.7558
+height = 10.3113
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0.440125, -2.20064 )
+z_index = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 150
+health = 100
+gun_cooldown = 0.25
+reload_time = 2.7
+mags_left = 4
+
+[node name="Body" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+animation = "right"
+
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.181 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="GunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Muzzle" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Muzzleup" type="Position2D" parent="Muzzle"]
+position = Vector2( 12, -40 )
+rotation = -1.5708
+
+[node name="Muzzleright" type="Position2D" parent="Muzzle"]
+position = Vector2( 49, 12 )
+
+[node name="Muzzledown" type="Position2D" parent="Muzzle"]
+position = Vector2( -12, 43.132 )
+rotation = 1.5708
+
+[node name="Muzzleleft" type="Position2D" parent="Muzzle"]
+position = Vector2( -53.695, -12 )
+rotation = 3.14159
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 42 )
+volume_db = -15.0
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 43 )
+volume_db = -8.0
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 44 )
+volume_db = -8.0
+
+[node name="StepSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 45 )
+volume_db = -15.0
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
