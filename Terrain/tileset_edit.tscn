@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/tileset_complet_cropped.png" type="Texture" id=1]
+[ext_resource path="res://Terrain/wall.gd" type="Script" id=2]
+[ext_resource path="res://Terrain/StaticBody2D.gd" type="Script" id=3]
+[ext_resource path="res://usable_stripes/exitsign.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.5597, 15.8045 )
+
+[node name="tileset_edit" type="Node2D"]
+
+[node name="wall" type="Sprite" parent="."]
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 32, 32 )
+region_filter_clip = true
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall"]
+position = Vector2( -0.0496933, 0.168119 )
+rotation = -0.00155708
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D"]
+position = Vector2( 0.214618, -0.146521 )
+shape = SubResource( 1 )
+
+[node name="floor" type="Sprite" parent="."]
+position = Vector2( 56, 16 )
+z_index = -1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="exit" type="Sprite" parent="."]
+position = Vector2( 112, 16 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 32 )
+__meta__ = {
+"_edit_group_": true
+}
