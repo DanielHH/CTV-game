@@ -74,6 +74,8 @@ __meta__ = {
 Bullet = ExtResource( 2 )
 speed = 150
 health = 100
+gun_cooldown = 0.25
+reload_time = 2.7
 
 [node name="Body" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )

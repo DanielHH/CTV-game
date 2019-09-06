@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 onready var parent = get_parent()
 
-signal hit
 signal dead
 signal is_infected
 signal reward

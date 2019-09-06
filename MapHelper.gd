@@ -21,17 +21,17 @@ func _on_Player_reloading(mags_left):
 func _on_Player_reloaded(bullets_left):
 	$HUD.update_chamber(bullets_left)
 
-func _start_level():
+func _on_HUD_start_level():
 	$HUD.show_message("Get Ready")
 	yield($HUD/MessageTimer, "timeout")
 	$Player.can_shoot = true
 	$Player.can_move = true
 	get_tree().call_group("NPCs", "start_walking")
 
-func _reset_level():
+func _on_HUD_reset_level():
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
-	_start_level()
+	_on_HUD_start_level()
 
 func _on_NPC_dead(is_infected):
 	if is_infected:
@@ -46,7 +46,7 @@ func _on_NPC_is_infected():
 	infected_left += 1
 	reward -= 100
 
-func _on_Infected_Exit_game_over():
+func _on_Exit_game_over():
 	if not game_over:
 		game_over = true
 		$HUD.show_game_over("The Virus got out...")
